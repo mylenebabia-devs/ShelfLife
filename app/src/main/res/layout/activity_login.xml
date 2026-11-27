@@ -1,0 +1,40 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" android:layout_width="match_parent" android:layout_height="match_parent" android:background="@color/cream" android:fillViewport="true">
+  <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="24dp">
+    <ImageView android:layout_width="76dp" android:layout_height="76dp" android:layout_gravity="center_horizontal" android:src="@drawable/shelflife_logo" android:scaleType="fitCenter" android:contentDescription="ShelfLife grocery logo" />
+    <TextView style="@style/Text.Shelf.Title" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="ShelfLife" android:gravity="center" android:layout_marginTop="12dp" android:textColor="@color/deep_green" />
+    <com.google.android.material.card.MaterialCardView style="@style/Widget.Shelf.Card" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="24dp">
+      <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="22dp">
+        <TextView android:id="@+id/loginTitle" style="@style/Text.Shelf.Title" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Welcome back" />
+        <TextView android:id="@+id/loginSubtitle" style="@style/Text.Shelf.Muted" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Sign in to your store workspace." android:layout_marginTop="8dp" />
+        <LinearLayout android:id="@+id/registrationFields" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:visibility="gone">
+          <com.google.android.material.textfield.TextInputLayout style="@style/Widget.Shelf.Input" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="14dp" android:hint="Full name">
+            <com.google.android.material.textfield.TextInputEditText android:id="@+id/etStaffName" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="textPersonName" android:maxLines="1" android:textSize="16sp" android:padding="16dp" />
+          </com.google.android.material.textfield.TextInputLayout>
+        </LinearLayout>
+        <com.google.android.material.textfield.TextInputLayout style="@style/Widget.Shelf.Input" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="14dp" android:hint="Email address">
+          <com.google.android.material.textfield.TextInputEditText android:id="@+id/etUser" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="textEmailAddress" android:maxLines="1" android:textSize="16sp" android:padding="16dp" />
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout style="@style/Widget.Shelf.Input" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="14dp" android:hint="Password" app:endIconMode="password_toggle">
+          <com.google.android.material.textfield.TextInputEditText android:id="@+id/etPass" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="textPassword" android:maxLines="1" android:textSize="16sp" android:padding="16dp" />
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout android:id="@+id/confirmationField" style="@style/Widget.Shelf.Input" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="14dp" android:hint="Confirm password" app:endIconMode="password_toggle" android:visibility="gone">
+          <com.google.android.material.textfield.TextInputEditText android:id="@+id/etConfirm" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="textPassword" android:maxLines="1" android:textSize="16sp" android:padding="16dp" />
+        </com.google.android.material.textfield.TextInputLayout>
+        <LinearLayout android:id="@+id/approvalFields" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:visibility="gone">
+          <TextView style="@style/Text.Shelf.Eyebrow" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="STAFF APPROVAL" android:layout_marginTop="24dp" />
+          <TextView style="@style/Text.Shelf.Small" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="An existing staff member approves access to this store." android:layout_marginTop="6dp" />
+          <com.google.android.material.textfield.TextInputLayout style="@style/Widget.Shelf.Input" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="14dp" android:hint="Approving staff email">
+            <com.google.android.material.textfield.TextInputEditText android:id="@+id/etApprover" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="textEmailAddress" android:maxLines="1" android:textSize="16sp" android:padding="16dp" />
+          </com.google.android.material.textfield.TextInputLayout>
+          <com.google.android.material.textfield.TextInputLayout style="@style/Widget.Shelf.Input" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="14dp" android:hint="Approving staff password" app:endIconMode="password_toggle">
+            <com.google.android.material.textfield.TextInputEditText android:id="@+id/etApproverPass" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="textPassword" android:maxLines="1" android:textSize="16sp" android:padding="16dp" />
+          </com.google.android.material.textfield.TextInputLayout>
+        </LinearLayout>
+        <TextView android:id="@+id/tvError" style="@style/Text.Shelf.Small" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="" android:layout_marginTop="14dp" android:textColor="@color/status_expired" android:accessibilityLiveRegion="polite" android:visibility="gone" />
+        <com.google.android.material.button.MaterialButton android:id="@+id/btnLogin" style="@style/Widget.Shelf.Button" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Sign in" android:layout_marginTop="22dp" />
+        <com.google.android.material.button.MaterialButton android:id="@+id/btnRegister" style="@style/Widget.Shelf.Button.Outline" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Create a staff account" android:layout_marginTop="8dp" />
+      </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+    <TextView android:id="@+id/loginHint" style="@style/Text.Shelf.Small" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="" android:gravity="center" android:layout_marginTop="20dp" />
+  </LinearLayout>
+</ScrollView>

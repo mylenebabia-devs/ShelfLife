@@ -1,0 +1,41 @@
+package com.example.shelflife;
+
+import androidx.lifecycle.LiveData;
+import androidx.room.*;
+import java.util.List;
+@Dao public interface ProductDao {
+ @Query("SELECT value FROM saved_options WHERE kind='category' UNION SELECT category AS value FROM product_catalog WHERE category IS NOT NULL") java.util.List<String> categories();
+ @Query("SELECT * FROM products ORDER BY expiryDate IS NULL, expiryDate, id") LiveData<List<Product>> observeAll();
+ @Query("SELECT * FROM products ORDER BY expiryDate IS NULL, expiryDate, id") List<Product> getAll();
+ @Query("SELECT * FROM products WHERE id=:id") Product get(long id);
+ @Query("SELECT * FROM products WHERE sku=:sku ORDER BY id") List<Product> sku(String sku);
+ @Query("SELECT * FROM products WHERE barcode=:code ORDER BY archived,quantity<=0,expiryDate IS NULL,expiryDate,id LIMIT 1") Product barcode(String code);
+ @Query("SELECT * FROM product_catalog WHERE sku=:sku") CatalogProduct catalog(String sku);
+ @Query("SELECT * FROM product_catalog") java.util.List<CatalogProduct> catalogAll();
+ @Insert long insert(CatalogProduct p);
+ @Update void update(CatalogProduct p);
+ @Query("DELETE FROM grocery_reminders WHERE batchId IN (SELECT id FROM products WHERE sku=:sku)") void deleteReminders(String sku);
+ @Query("DELETE FROM grocery_reminders WHERE batchId=:id") void clearReminders(long id);
+ @Query("DELETE FROM grocery_movements WHERE batchId IN (SELECT id FROM products WHERE sku=:sku)") void deleteMovements(String sku);
+ @Query("DELETE FROM products WHERE sku=:sku") void deleteBatches(String sku);
+ @Query("DELETE FROM product_catalog WHERE sku=:sku") void deleteCatalog(String sku);
+ @Query("SELECT COUNT(*) FROM products WHERE photoPath=:path") int photoReferences(String path);
+ @Query("SELECT COUNT(*) FROM grocery_staff WHERE photoPath=:path") int staffPhotoReferences(String path);
+ @Query("SELECT value FROM saved_options WHERE kind=:kind ORDER BY value COLLATE NOCASE") java.util.List<String> options(String kind);
+ @Insert(onConflict=OnConflictStrategy.IGNORE) void remember(SavedOption option);
+ @Query("SELECT COUNT(*) FROM products WHERE sku=:sku AND stockReference=:reference COLLATE NOCASE AND id!=:exceptId") int duplicateBatch(String sku,String reference,long exceptId);
+ @Insert long insert(Product p);
+ @Update void update(Product p);
+ @Query("SELECT * FROM grocery_staff WHERE email=:email LIMIT 1") Staff staff(String email);
+ @Query("SELECT * FROM grocery_staff WHERE id=:id") Staff staff(long id);
+ @Query("SELECT COUNT(*) FROM grocery_staff") int staffCount();
+ @Insert long insert(Staff s);
+ @Update void update(Staff s);
+ @Insert long insert(StockMovement m);
+ @Query("SELECT * FROM grocery_movements ORDER BY time DESC,id DESC") LiveData<List<StockMovement>> observeMovements();
+ @Query("SELECT * FROM grocery_movements ORDER BY time DESC,id DESC") List<StockMovement> movements();
+ @Query("SELECT * FROM grocery_movements WHERE id=:id") StockMovement movement(long id);
+ @Query("SELECT COUNT(*) FROM grocery_movements WHERE reversalOf=:id") int reversed(long id);
+ @Insert(onConflict=OnConflictStrategy.IGNORE) long insert(Reminder r);
+ @Query("SELECT COUNT(*) FROM grocery_reminders WHERE batchId=:batch") int reminderCount(long batch);
+}

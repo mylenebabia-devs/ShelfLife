@@ -1,0 +1,1 @@
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android"><item android:width="36dp" android:height="36dp" android:gravity="center"><bitmap android:src="@drawable/shelflife_logo" android:gravity="fill"/></item></layer-list>

@@ -1,0 +1,88 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" android:layout_width="match_parent" android:layout_height="match_parent" android:fillViewport="true">
+  <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:paddingHorizontal="24dp" android:paddingBottom="16dp">
+    <LinearLayout android:id="@+id/productPhotoEditor" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
+      <ImageView android:id="@+id/photoPreview" android:layout_width="match_parent" android:layout_height="120dp" android:scaleType="centerInside" android:visibility="gone" android:contentDescription="Selected product photo" />
+      <com.google.android.material.button.MaterialButton android:id="@+id/chooseProductPhoto" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Choose photo (optional)" style="@style/Widget.Shelf.Button.Outline" />
+      <com.google.android.material.button.MaterialButton android:id="@+id/removeProductPhoto" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Remove photo" style="@style/Widget.Shelf.Button.Outline" />
+    </LinearLayout>
+    <TextView android:id="@+id/formProductName" style="@style/Text.Shelf.Section" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="" android:visibility="gone" />
+    <com.google.android.material.textfield.TextInputLayout style="@style/Widget.Shelf.Input" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:hint="Choose or type a category" android:id="@+id/categoryInput" app:endIconMode="dropdown_menu" app:helperText="Choose a category, or Others to add one.">
+      <com.google.android.material.textfield.MaterialAutoCompleteTextView android:id="@+id/etCategory" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="none" android:maxLines="1" android:textSize="16sp" android:padding="16dp" android:completionThreshold="0" />
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout style="@style/Widget.Shelf.Input" android:id="@+id/etCustomCategoryBox" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Custom category" android:visibility="gone">
+      <com.google.android.material.textfield.TextInputEditText android:id="@+id/etCustomCategory" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="textCapWords" android:maxLines="1" android:maxLength="60" />
+    </com.google.android.material.textfield.TextInputLayout>
+    <LinearLayout android:id="@+id/productFields" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
+      <TextView style="@style/Text.Shelf.Small" android:id="@+id/lookupStatus" android:layout_width="match_parent" android:layout_height="wrap_content" android:paddingVertical="8dp" android:text="Enter or scan a barcode to find product information." />
+      <TextView style="@style/Text.Shelf.Eyebrow" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="01 / PRODUCT" android:layout_marginTop="20dp" />
+      <TextView style="@style/Text.Shelf.Section" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="What is on the shelf?" android:layout_marginTop="4dp" />
+      <com.google.android.material.textfield.TextInputLayout style="@style/Widget.Shelf.Input" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:hint="Product name">
+        <com.google.android.material.textfield.TextInputEditText android:id="@+id/etName" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="textCapWords" android:maxLines="1" android:textSize="16sp" android:padding="16dp" />
+      </com.google.android.material.textfield.TextInputLayout>
+      <com.google.android.material.textfield.TextInputLayout android:id="@+id/tilSku" style="@style/Widget.Shelf.Input" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:hint="Internal SKU (automatic)">
+        <com.google.android.material.textfield.TextInputEditText android:id="@+id/etSku" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="text" android:maxLines="1" android:textSize="16sp" android:padding="16dp" android:focusable="false" />
+      </com.google.android.material.textfield.TextInputLayout>
+      <com.google.android.material.textfield.TextInputLayout android:id="@+id/tilBarcode" style="@style/Widget.Shelf.Input" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:hint="Barcode (optional)" app:endIconMode="custom" app:endIconDrawable="@drawable/ic_barcode_scan" app:endIconContentDescription="Scan barcode">
+        <com.google.android.material.textfield.TextInputEditText android:id="@+id/etBarcode" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="text" android:maxLines="1" android:textSize="16sp" android:padding="16dp" />
+      </com.google.android.material.textfield.TextInputLayout>
+      <com.google.android.material.textfield.TextInputLayout style="@style/Widget.Shelf.Input" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:hint="Brand (optional)">
+        <com.google.android.material.textfield.TextInputEditText android:id="@+id/etBrand" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="text" android:maxLines="1" android:textSize="16sp" android:padding="16dp" />
+      </com.google.android.material.textfield.TextInputLayout>
+      <com.google.android.material.textfield.TextInputLayout style="@style/Widget.Shelf.Input" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:hint="Quantity unit (pieces, cartons, kg)">
+        <com.google.android.material.textfield.TextInputEditText android:id="@+id/etUnit" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="text" android:maxLines="1" android:textSize="16sp" android:padding="16dp" />
+      </com.google.android.material.textfield.TextInputLayout>
+      <com.google.android.material.textfield.TextInputLayout style="@style/Widget.Shelf.Input" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:hint="Low-stock threshold">
+        <com.google.android.material.textfield.TextInputEditText android:id="@+id/etLow" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="numberDecimal" android:maxLines="1" android:textSize="16sp" android:padding="16dp" />
+      </com.google.android.material.textfield.TextInputLayout>
+      <com.google.android.material.textfield.TextInputLayout style="@style/Widget.Shelf.Input" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Description (optional)">
+        <com.google.android.material.textfield.TextInputEditText android:id="@+id/etDescription" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="textCapSentences|textMultiLine" android:maxLength="2000" />
+      </com.google.android.material.textfield.TextInputLayout>
+      <com.google.android.material.textfield.TextInputLayout style="@style/Widget.Shelf.Input" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Pack size (optional)" android:visibility="gone">
+        <com.google.android.material.textfield.TextInputEditText android:id="@+id/etPackSize" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="textCapSentences|textMultiLine" android:maxLength="120" />
+      </com.google.android.material.textfield.TextInputLayout>
+      <com.google.android.material.textfield.TextInputLayout style="@style/Widget.Shelf.Input" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Variation / flavor (optional)">
+        <com.google.android.material.textfield.TextInputEditText android:id="@+id/etVariation" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="textCapWords" android:maxLength="120" />
+      </com.google.android.material.textfield.TextInputLayout>
+      <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
+        <TextView style="@style/Text.Shelf.Section" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:text="Product measurement" />
+        <com.google.android.material.textfield.TextInputLayout style="@style/Widget.Shelf.Input" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Value (optional)">
+          <com.google.android.material.textfield.TextInputEditText android:id="@+id/etMeasurementValue" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="numberDecimal" android:maxLines="1" />
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout style="@style/Widget.Shelf.Input" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Measurement unit" app:endIconMode="dropdown_menu">
+          <com.google.android.material.textfield.MaterialAutoCompleteTextView android:id="@+id/etMeasurementUnit" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="none" android:maxLines="1" />
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout style="@style/Widget.Shelf.Input" android:id="@+id/etCustomMeasurementUnitBox" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Custom measurement unit" android:visibility="gone">
+          <com.google.android.material.textfield.TextInputEditText android:id="@+id/etCustomMeasurementUnit" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="textCapWords" android:maxLines="1" android:maxLength="32" />
+        </com.google.android.material.textfield.TextInputLayout>
+      </LinearLayout>
+    </LinearLayout>
+    <LinearLayout android:id="@+id/stockFields" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
+      <TextView style="@style/Text.Shelf.Eyebrow" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="BATCH INFORMATION" android:layout_marginTop="20dp" />
+      <TextView style="@style/Text.Shelf.Section" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Record this delivery" android:layout_marginTop="4dp" />
+      <com.google.android.material.textfield.TextInputLayout style="@style/Widget.Shelf.Input" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Batch number / stock reference (e.g. B1)">
+        <com.google.android.material.textfield.TextInputEditText android:id="@+id/etStockReference" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="textCapCharacters" android:maxLength="40" />
+      </com.google.android.material.textfield.TextInputLayout>
+      <com.google.android.material.textfield.TextInputLayout style="@style/Widget.Shelf.Input" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Quantity received">
+        <com.google.android.material.textfield.TextInputEditText android:id="@+id/etReceivedQty" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="numberDecimal" android:maxLines="1" />
+      </com.google.android.material.textfield.TextInputLayout>
+      <com.google.android.material.textfield.TextInputLayout style="@style/Widget.Shelf.Input" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:hint="Quantity remaining">
+        <com.google.android.material.textfield.TextInputEditText android:id="@+id/etQty" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="numberDecimal" android:maxLines="1" android:textSize="16sp" android:padding="16dp" />
+      </com.google.android.material.textfield.TextInputLayout>
+      <com.google.android.material.textfield.TextInputLayout style="@style/Widget.Shelf.Input" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:hint="Storage location">
+        <com.google.android.material.textfield.TextInputEditText android:id="@+id/etLocation" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="text" android:maxLines="1" android:textSize="16sp" android:padding="16dp" />
+      </com.google.android.material.textfield.TextInputLayout>
+      <com.google.android.material.textfield.TextInputLayout style="@style/Widget.Shelf.Input" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:hint="Supplier lot (optional)">
+        <com.google.android.material.textfield.TextInputEditText android:id="@+id/etBatch" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="text" android:maxLines="1" android:textSize="16sp" android:padding="16dp" />
+      </com.google.android.material.textfield.TextInputLayout>
+      <com.google.android.material.button.MaterialButton android:id="@+id/btnReceived" style="@style/Widget.Shelf.Button.Outline" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Date received" app:icon="@drawable/ic_calendar" android:layout_marginTop="12dp" />
+      <TextView style="@style/Text.Shelf.Eyebrow" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="03 / PRINTED DATE" android:layout_marginTop="20dp" />
+      <TextView style="@style/Text.Shelf.Section" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Check the packaging" android:layout_marginTop="4dp" />
+      <TextView style="@style/Text.Shelf.Small" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Barcodes identify a product. The date is recorded separately." android:layout_marginTop="6dp" />
+      <Spinner android:id="@+id/spDateType" android:layout_width="match_parent" android:layout_height="56dp" android:background="@drawable/bg_soft_green" android:layout_marginTop="12dp" />
+      <com.google.android.material.button.MaterialButton android:id="@+id/btnDate" style="@style/Widget.Shelf.Button.Outline" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Choose printed date" app:icon="@drawable/ic_calendar" android:layout_marginTop="8dp" />
+      <CheckBox android:id="@+id/checkPast" android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="48dp" android:text="I checked the label and acknowledge any past-date stock." android:textSize="13sp" android:layout_marginTop="12dp" />
+    </LinearLayout>
+    <TextView android:id="@+id/tvFormHint" style="@style/Text.Shelf.Small" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Enter a unique stock reference for each batch of this product." android:layout_marginTop="16dp" />
+    <TextView android:id="@+id/tvError" style="@style/Text.Shelf.Small" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="" android:visibility="gone" android:textColor="@color/status_expired" android:layout_marginTop="12dp" android:accessibilityLiveRegion="polite" />
+  </LinearLayout>
+</ScrollView>

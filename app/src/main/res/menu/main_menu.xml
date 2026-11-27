@@ -1,0 +1,8 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+<item android:id="@+id/action_alerts" android:title="Expiration alerts" app:showAsAction="never"/>
+<item android:id="@+id/action_reports" android:title="Reports and stock history" app:showAsAction="never"/>
+<item android:id="@+id/action_sort" android:title="Sort by product name" android:checkable="true" app:showAsAction="never"/>
+<item android:id="@+id/action_profile" android:title="Staff profile / settings" app:showAsAction="never"/>
+<item android:id="@+id/action_samples" android:title="Load DEMO groceries (empty inventory)" app:showAsAction="never"/>
+<item android:id="@+id/action_logout" android:title="Logout" app:showAsAction="never"/>
+</menu>

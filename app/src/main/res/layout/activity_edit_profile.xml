@@ -1,0 +1,29 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical" android:background="@color/cream">
+  <com.google.android.material.appbar.MaterialToolbar android:id="@+id/toolbar" android:layout_width="match_parent" android:layout_height="56dp" app:title="Edit your profile" app:navigationIcon="?attr/homeAsUpIndicator" app:logo="@drawable/shelflife_toolbar" app:logoDescription="ShelfLife logo" />
+  <ScrollView android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:fillViewport="true">
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="24dp">
+      <FrameLayout android:layout_width="96dp" android:layout_height="96dp" android:layout_gravity="center_horizontal">
+        <TextView android:id="@+id/editInitial" style="@style/Text.Shelf.Title" android:layout_width="match_parent" android:layout_height="match_parent" android:gravity="center" android:background="@drawable/bg_avatar" android:text="SL" />
+        <com.google.android.material.imageview.ShapeableImageView android:id="@+id/editPhoto" android:layout_width="match_parent" android:layout_height="match_parent" android:scaleType="centerCrop" android:visibility="gone" android:contentDescription="Selected profile photo" app:shapeAppearanceOverlay="@style/Shape.Shelf.Avatar" />
+      </FrameLayout>
+      <com.google.android.material.button.MaterialButton android:id="@+id/btnChoosePhoto" style="@style/Widget.Shelf.Button.Secondary" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Choose photo" android:layout_marginTop="16dp" />
+      <com.google.android.material.button.MaterialButton android:id="@+id/btnRemovePhoto" style="@style/Widget.Shelf.Button.Outline" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Remove photo" android:layout_marginTop="4dp" />
+      <TextView style="@style/Text.Shelf.Small" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="A clear photo helps staff recognize your account." android:gravity="center" android:layout_marginTop="8dp" />
+      <com.google.android.material.textfield.TextInputLayout style="@style/Widget.Shelf.Input" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="14dp" android:hint="Full name">
+        <com.google.android.material.textfield.TextInputEditText android:id="@+id/editName" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="textPersonName" android:maxLines="1" android:textSize="16sp" android:padding="16dp" />
+      </com.google.android.material.textfield.TextInputLayout>
+      <com.google.android.material.textfield.TextInputLayout style="@style/Widget.Shelf.Input" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="14dp" android:hint="Email address">
+        <com.google.android.material.textfield.TextInputEditText android:id="@+id/editEmail" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="textEmailAddress" android:maxLines="1" android:textSize="16sp" android:padding="16dp" />
+      </com.google.android.material.textfield.TextInputLayout>
+      <com.google.android.material.textfield.TextInputLayout style="@style/Widget.Shelf.Input" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="14dp" android:hint="Phone number (optional)">
+        <com.google.android.material.textfield.TextInputEditText android:id="@+id/editPhone" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="phone" android:maxLines="1" android:textSize="16sp" android:padding="16dp" />
+      </com.google.android.material.textfield.TextInputLayout>
+      <com.google.android.material.textfield.TextInputLayout android:id="@+id/emailPasswordField" style="@style/Widget.Shelf.Input" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="14dp" android:hint="Current password" app:endIconMode="password_toggle" android:visibility="gone" app:helperText="Required only when changing your email address.">
+        <com.google.android.material.textfield.TextInputEditText android:id="@+id/editPassword" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="textPassword" android:maxLines="1" android:textSize="16sp" android:padding="16dp" />
+      </com.google.android.material.textfield.TextInputLayout>
+      <TextView android:id="@+id/profileError" style="@style/Text.Shelf.Small" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="" android:textColor="@color/status_expired" android:layout_marginTop="16dp" android:accessibilityLiveRegion="polite" />
+      <com.google.android.material.button.MaterialButton android:id="@+id/btnSaveProfile" style="@style/Widget.Shelf.Button" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Save changes" android:layout_marginTop="16dp" />
+      <TextView style="@style/Text.Shelf.Small" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Changes apply to your account only. Previous stock-history entries keep the name recorded at the time." android:layout_marginTop="14dp" />
+    </LinearLayout>
+  </ScrollView>
+</LinearLayout>

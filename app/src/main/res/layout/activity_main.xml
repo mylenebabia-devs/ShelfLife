@@ -1,0 +1,82 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical" android:background="@color/cream">
+  <LinearLayout android:layout_width="match_parent" android:layout_height="56dp" android:gravity="center_vertical" android:paddingEnd="12dp">
+    <com.google.android.material.appbar.MaterialToolbar android:id="@+id/toolbar" android:layout_width="0dp" android:layout_height="56dp" android:paddingHorizontal="8dp" app:title="ShelfLife" app:titleTextColor="@color/deep_green" app:logo="@drawable/shelflife_toolbar" app:contentInsetStartWithNavigation="16dp" app:logoDescription="ShelfLife logo" android:layout_weight="1" />
+    <FrameLayout android:id="@+id/headerProfile" android:layout_width="48dp" android:layout_height="48dp" android:clickable="true" android:focusable="true" android:contentDescription="Open staff profile" android:background="?attr/selectableItemBackgroundBorderless">
+      <TextView android:id="@+id/headerInitial" android:layout_width="36dp" android:layout_height="36dp" android:layout_gravity="center" android:gravity="center" android:background="@drawable/bg_avatar" android:text="S" android:textColor="@color/deep_green" android:textSize="16sp" android:importantForAccessibility="no" />
+      <com.google.android.material.imageview.ShapeableImageView android:id="@+id/headerPhoto" android:layout_width="36dp" android:layout_height="36dp" android:layout_gravity="center" android:scaleType="centerCrop" android:visibility="gone" android:importantForAccessibility="no" app:shapeAppearanceOverlay="@style/Shape.Shelf.Avatar" />
+    </FrameLayout>
+  </LinearLayout>
+  <androidx.coordinatorlayout.widget.CoordinatorLayout android:id="@+id/inventoryPanel" android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1">
+    <com.google.android.material.appbar.AppBarLayout android:id="@+id/dashboardAppBar" android:layout_width="match_parent" android:layout_height="wrap_content" android:background="@color/cream" app:elevation="0dp">
+      <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" app:layout_scrollFlags="scroll|enterAlways">
+        <LinearLayout android:id="@+id/homeIntro" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:paddingHorizontal="20dp" android:paddingTop="0dp" android:paddingBottom="4dp">
+          <TextView android:id="@+id/tvExtraStats" style="@style/Text.Shelf.Small" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="" android:layout_marginTop="0dp" android:textSize="12sp" android:maxLines="1" android:ellipsize="end" />
+        </LinearLayout>
+        <LinearLayout android:id="@+id/homeStats" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:paddingHorizontal="16dp">
+          <com.google.android.material.card.MaterialCardView style="@style/Widget.Shelf.Card" android:layout_width="0dp" android:layout_weight="1" android:layout_height="88dp" app:cardBackgroundColor="@color/soft_green" android:layout_margin="4dp" app:cardCornerRadius="16dp">
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="10dp" android:gravity="center">
+              <ImageView android:layout_width="18dp" android:layout_height="18dp" android:src="@drawable/ic_box" android:importantForAccessibility="no" />
+              <TextView android:id="@+id/tvTotal" style="@style/Text.Shelf.Number" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="0" android:layout_marginTop="3dp" android:textSize="24sp" android:gravity="center" />
+              <TextView style="@style/Text.Shelf.Small" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Products" android:layout_marginTop="2dp" android:textSize="11sp" android:gravity="center" android:maxLines="1" />
+            </LinearLayout>
+          </com.google.android.material.card.MaterialCardView>
+          <com.google.android.material.card.MaterialCardView style="@style/Widget.Shelf.Card" android:layout_width="0dp" android:layout_weight="1" android:layout_height="88dp" app:cardBackgroundColor="@color/status_soon_bg" android:layout_margin="4dp" app:cardCornerRadius="16dp">
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="10dp" android:gravity="center">
+              <ImageView android:layout_width="18dp" android:layout_height="18dp" android:src="@drawable/ic_clock" android:importantForAccessibility="no" />
+              <TextView android:id="@+id/tvSoon" style="@style/Text.Shelf.Number" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="0" android:layout_marginTop="3dp" android:textSize="24sp" android:gravity="center" />
+              <TextView style="@style/Text.Shelf.Small" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Due soon" android:layout_marginTop="2dp" android:textSize="11sp" android:gravity="center" android:maxLines="1" />
+            </LinearLayout>
+          </com.google.android.material.card.MaterialCardView>
+          <com.google.android.material.card.MaterialCardView style="@style/Widget.Shelf.Card" android:layout_width="0dp" android:layout_weight="1" android:layout_height="88dp" app:cardBackgroundColor="@color/status_expired_bg" android:layout_margin="4dp" app:cardCornerRadius="16dp">
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="10dp" android:gravity="center">
+              <ImageView android:layout_width="18dp" android:layout_height="18dp" android:src="@drawable/ic_alert" android:importantForAccessibility="no" />
+              <TextView android:id="@+id/tvExpired" style="@style/Text.Shelf.Number" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="0" android:layout_marginTop="3dp" android:textSize="24sp" android:gravity="center" />
+              <TextView style="@style/Text.Shelf.Small" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Expired" android:layout_marginTop="2dp" android:textSize="11sp" android:gravity="center" android:maxLines="1" />
+            </LinearLayout>
+          </com.google.android.material.card.MaterialCardView>
+        </LinearLayout>
+        <LinearLayout android:id="@+id/quickActions" android:layout_width="match_parent" android:layout_height="wrap_content" android:paddingHorizontal="20dp" android:paddingTop="4dp" android:paddingBottom="0dp">
+          <com.google.android.material.button.MaterialButton android:id="@+id/fabScan" style="@style/Widget.Shelf.Button" android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:text="Scan" app:icon="@drawable/ic_barcode_scan" android:minHeight="48dp" android:paddingHorizontal="12dp" />
+          <com.google.android.material.button.MaterialButton android:id="@+id/fabAdd" style="@style/Widget.Shelf.Button.Secondary" android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:text="Add product" app:icon="@drawable/ic_add" android:layout_marginStart="10dp" android:minHeight="48dp" android:paddingHorizontal="12dp" />
+        </LinearLayout>
+        <TextView android:id="@+id/sectionTitle" style="@style/Text.Shelf.Section" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Your inventory" android:paddingHorizontal="20dp" android:layout_marginTop="6dp" android:textSize="18sp" />
+        <TextView android:id="@+id/sectionSubtitle" style="@style/Text.Shelf.Small" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Stock organized by printed date." android:paddingHorizontal="20dp" android:layout_marginTop="4dp" android:visibility="gone" />
+      </LinearLayout>
+    </com.google.android.material.appbar.AppBarLayout>
+    <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical" app:layout_behavior="@string/appbar_scrolling_view_behavior">
+      <com.google.android.material.textfield.TextInputLayout android:id="@+id/tilSearch" style="@style/Widget.Shelf.Input" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginHorizontal="20dp" android:layout_marginTop="4dp" android:hint="Search products" app:startIconDrawable="@drawable/ic_search" app:endIconMode="none" app:endIconDrawable="@drawable/ic_barcode_scan" app:endIconContentDescription="Scan barcode">
+        <com.google.android.material.textfield.TextInputEditText android:id="@+id/etSearch" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="text" android:maxLines="1" android:textSize="14sp" android:padding="12dp" android:minHeight="48dp" />
+      </com.google.android.material.textfield.TextInputLayout>
+      <com.google.android.material.button.MaterialButton android:id="@+id/btnSort" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="20dp" android:minHeight="48dp" android:text="Sort: earliest date" android:textSize="12sp" style="@style/Widget.Shelf.Button.Outline" android:visibility="gone" />
+      <HorizontalScrollView android:id="@+id/filterStrip" android:layout_width="match_parent" android:layout_height="wrap_content" android:paddingHorizontal="16dp" android:scrollbars="none">
+        <com.google.android.material.chip.ChipGroup android:id="@+id/groupFilter" android:layout_width="wrap_content" android:layout_height="wrap_content" app:singleSelection="true" app:selectionRequired="true" app:singleLine="true" />
+      </HorizontalScrollView>
+      <HorizontalScrollView android:id="@+id/categoryStrip" android:layout_width="match_parent" android:layout_height="wrap_content" android:paddingHorizontal="16dp" android:scrollbars="none">
+        <com.google.android.material.chip.ChipGroup android:id="@+id/groupCategory" android:layout_width="wrap_content" android:layout_height="wrap_content" app:singleSelection="true" app:selectionRequired="true" app:singleLine="true" />
+      </HorizontalScrollView>
+      <LinearLayout android:id="@+id/emptyPanel" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="24dp" android:visibility="gone">
+        <ImageView android:layout_width="52dp" android:layout_height="52dp" android:layout_gravity="center_horizontal" android:src="@drawable/ic_box" android:importantForAccessibility="no" />
+        <TextView style="@style/Text.Shelf.Section" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="A little space for something fresh." android:gravity="center" android:layout_marginTop="12dp" />
+        <TextView android:id="@+id/tvEmpty" style="@style/Text.Shelf.Muted" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="No matching stock. Add a product or try another filter." android:gravity="center" android:layout_marginTop="8dp" />
+      </LinearLayout>
+      <androidx.recyclerview.widget.RecyclerView android:id="@+id/recycler" android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:clipToPadding="false" android:paddingHorizontal="16dp" android:paddingBottom="20dp" />
+    </LinearLayout>
+  </androidx.coordinatorlayout.widget.CoordinatorLayout>
+  <ScrollView android:id="@+id/profilePanel" android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:visibility="gone" android:fillViewport="true">
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="20dp">
+      <com.google.android.material.card.MaterialCardView style="@style/Widget.Shelf.Card" android:layout_width="match_parent" android:layout_height="wrap_content" app:cardBackgroundColor="@color/surface_white">
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="24dp">
+          <com.google.android.material.imageview.ShapeableImageView android:id="@+id/profilePhoto" android:layout_width="80dp" android:layout_height="80dp" android:layout_gravity="center_horizontal" android:scaleType="centerCrop" android:contentDescription="Staff profile photo" android:visibility="gone" app:shapeAppearanceOverlay="@style/Shape.Shelf.Avatar" />
+          <TextView android:id="@+id/profileInitial" style="@style/Text.Shelf.Title" android:layout_width="72dp" android:layout_height="72dp" android:text="SL" android:gravity="center" android:textColor="@color/brand_primary" android:background="@drawable/bg_avatar" android:layout_gravity="center_horizontal" />
+          <TextView android:id="@+id/profileName" style="@style/Text.Shelf.Title" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Store staff" android:gravity="center" android:layout_marginTop="16dp" />
+          <TextView android:id="@+id/profileEmail" style="@style/Text.Shelf.Muted" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="" android:gravity="center" android:layout_marginTop="6dp" />
+          <com.google.android.material.button.MaterialButton android:id="@+id/btnEditProfile" style="@style/Widget.Shelf.Button.Secondary" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="16dp" android:text="Account information" app:icon="@drawable/ic_edit" />
+        </LinearLayout>
+      </com.google.android.material.card.MaterialCardView>
+      <com.google.android.material.button.MaterialButton style="@style/Widget.Shelf.Button.Outline" android:id="@+id/btnPassword" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Change password" android:layout_marginTop="12dp" />
+      <com.google.android.material.button.MaterialButton style="@style/Widget.Shelf.Button.Outline" android:id="@+id/btnSettings" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Settings" android:layout_marginTop="12dp" />
+      <com.google.android.material.button.MaterialButton android:id="@+id/btnLogout" style="@style/Widget.Shelf.Button.Outline" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Log out" app:icon="@drawable/ic_logout" android:layout_marginTop="24dp" android:textColor="@color/status_expired" app:iconTint="@color/status_expired" />
+    </LinearLayout>
+  </ScrollView>
+  <com.google.android.material.bottomnavigation.BottomNavigationView android:id="@+id/bottomNavigation" android:layout_width="match_parent" android:layout_height="wrap_content" android:background="@color/surface_white" android:elevation="8dp" app:menu="@menu/bottom_navigation" app:labelVisibilityMode="labeled" app:itemIconTint="@color/navigation_tint" app:itemTextColor="@color/navigation_tint" android:paddingBottom="0dp" android:paddingTop="0dp" app:itemIconSize="22dp" android:minHeight="80dp" app:itemTextAppearanceActive="@style/Text.Shelf.Navigation" app:itemTextAppearanceInactive="@style/Text.Shelf.Navigation" app:itemPaddingTop="8dp" app:itemPaddingBottom="8dp" />
+</LinearLayout>

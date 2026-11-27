@@ -1,0 +1,18 @@
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/card" style="@style/Widget.Shelf.Card" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginVertical="4dp" app:cardCornerRadius="16dp">
+  <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="12dp">
+    <View android:id="@+id/viewStatus" android:layout_width="28dp" android:layout_height="3dp" android:background="@color/brand_primary" android:layout_marginBottom="12dp" android:visibility="gone" />
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center_vertical">
+      <ImageView android:id="@+id/productIcon" android:layout_width="36dp" android:layout_height="36dp" android:padding="8dp" android:background="@drawable/bg_soft_green" android:src="@drawable/ic_box" android:importantForAccessibility="no" android:scaleType="centerCrop" />
+      <LinearLayout android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:orientation="vertical" android:layout_marginStart="12dp">
+        <TextView android:id="@+id/tvName" style="@style/Text.Shelf.Section" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Product name" android:textSize="16sp" android:maxLines="2" android:ellipsize="end" />
+        <TextView android:id="@+id/tvMeta" style="@style/Text.Shelf.Small" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Category" android:layout_marginTop="2dp" android:maxLines="1" android:ellipsize="end" />
+      </LinearLayout>
+    </LinearLayout>
+    <TextView android:id="@+id/tvQty" style="@style/Text.Shelf.Body" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="" android:layout_marginTop="6dp" android:textSize="13sp" />
+    <TextView android:id="@+id/tvStatus" style="@style/Text.Shelf.Small" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Within date" android:layout_marginTop="6dp" android:background="@drawable/bg_status_pill" android:paddingHorizontal="10dp" android:paddingVertical="3dp" android:textStyle="bold" />
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="4dp">
+      <com.google.android.material.button.MaterialButton android:id="@+id/btnEdit" style="@style/Widget.Shelf.Button.Outline" android:layout_width="0dp" android:layout_weight="1" android:layout_height="48dp" android:text="Details" android:minHeight="48dp" android:paddingHorizontal="6dp" android:insetTop="2dp" android:insetBottom="2dp" android:maxLines="1" android:textSize="13sp" app:iconPadding="4dp" app:iconSize="18dp" />
+      <com.google.android.material.button.MaterialButton android:id="@+id/btnDelete" style="@style/Widget.Shelf.Button.Secondary" android:layout_width="0dp" android:layout_weight="1" android:layout_height="48dp" android:text="Add stock" app:icon="@drawable/ic_add" android:layout_marginStart="8dp" android:minHeight="48dp" android:paddingHorizontal="6dp" android:insetTop="2dp" android:insetBottom="2dp" android:maxLines="1" android:textSize="13sp" app:iconPadding="4dp" app:iconSize="18dp" />
+    </LinearLayout>
+  </LinearLayout>
+</com.google.android.material.card.MaterialCardView>

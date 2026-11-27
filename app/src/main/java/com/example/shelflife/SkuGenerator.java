@@ -1,0 +1,13 @@
+package com.example.shelflife;
+import java.text.Normalizer;
+import java.util.Locale;
+/** Deterministic suggestion; uniqueness is resolved transactionally by the repository. */
+public final class SkuGenerator {
+ private SkuGenerator(){}
+ public static boolean ready(String barcode,String name,String category,String brand,String value,String unit,String variation){try{requireReady(barcode,name,category,brand,value,unit,variation);return true;}catch(IllegalArgumentException e){return false;}}
+ public static void requireReady(String barcode,String name,String category,String brand,String value,String unit,String variation){String[] details={barcode,name,category,brand,value,unit,variation};for(String s:details)if(s==null||s.trim().isEmpty()||s.trim().equalsIgnoreCase("Others"))throw new IllegalArgumentException("Enter a barcode, product name, category, brand, measurement and variation before generating the SKU. Use a verified label such as Original or Unflavored where applicable.");if(barcode.length()>128||barcode.matches(".*[\\p{Cntrl}].*"))throw new IllegalArgumentException("Enter a valid barcode");Measurement.validate(value,unit);}
+
+ static String words(String s){return Normalizer.normalize(s==null?"":s,Normalizer.Form.NFD).replaceAll("\\p{M}","").toUpperCase(Locale.ROOT).replaceAll("[^A-Z0-9. ]"," ").trim();}
+ static String shortCode(String value,String fallback){String s=words(value).replaceAll("[^A-Z0-9]","");return s.isEmpty()?fallback:s.substring(0,Math.min(3,s.length()));}
+ public static String generate(String name,String category,String brand,String size,String variation){String n=words(name),c=words(category),v=words(variation);String cat=(n.contains("SARDIN")&&(c.contains("CANNED")||c.contains("SEAFOOD")||c.contains("SARDIN")))?"SAR":(n.contains("TUNA")&&(c.contains("CANNED")||c.contains("SEAFOOD")||c.contains("TUNA")))?"TUN":c.contains("BEVERAGE")?"BEV":c.contains("DAIRY")?"DAI":c.contains("BREAD")?"BAK":c.contains("CANNED")?"CAN":c.contains("SNACK")?"SNK":c.contains("CONDIMENT")?"CON":c.contains("TOILETR")?"TOI":c.contains("HOUSEHOLD")?"HOU":c.contains("FROZEN")?"FRZ":c.contains("MEAT")?"MEA":c.contains("FRUIT")?"FRU":c.contains("GRAIN")?"GRA":shortCode(c,"GEN");Measurement detected=Measurement.detect(size);String pack=detected!=null&&!detected.value.isEmpty()?Measurement.validate(detected.value,detected.unit).replace('.','P'):words(size).replaceAll("\\s+","").replace('.','P');if(pack.isEmpty())pack="STD";if(pack.length()>16)pack=pack.substring(0,16);String variety=v.contains("TOMATO")?"TS":v.contains("CHILI")||v.contains("CHILLI")?"CH":v.contains("FLAKE")?"FL":v.contains("ORIGINAL")?"OR":shortCode(v,"STD");return cat+"-"+shortCode(brand,"GEN")+"-"+pack+"-"+variety;}
+}
